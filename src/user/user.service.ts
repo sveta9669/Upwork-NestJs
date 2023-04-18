@@ -32,27 +32,10 @@ export class UserService {
     return this.userModel.findOne({ email: username });
   }
 
-
-  
-  
   findAll() {
     return this.userModel.find();
   }
   
-  // async userUp(id, data) {
-  //   console.log(id, data);
-  //   const user = await this.userModel.findByIdAndUpdate(id, { ...data })
-  //   return user
-  // }
-  
-  // async findOne(id: string) {
-  //   const user = await this.userModel.findById(id)
-  //   console.log(user.blocktime.getTime());
-  //   console.log(Date.now());
-
-    
-  //   return user;
-  // }
 
   async applyWork(id: string, userId: string) {
     const work = await this.workModel.findById(id)
@@ -94,8 +77,6 @@ export class UserService {
     console.log(...skillId);
 
     const user = await this.userModel.findById(userId)
-    // console.log(user);
-    // const skill = await this.skillModel.findById(skillId)
     await this.userModel.findByIdAndUpdate(userId, { skill: [...user.skill, ...skillId] })
     return "update";
   }

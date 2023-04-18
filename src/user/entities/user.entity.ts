@@ -10,11 +10,6 @@ export type UserDocument = HydratedDocument<User>
 
 @Schema()
 export class User {
-    // @Prop()
-    // count:number;
-    // @Prop({type:Date})
-    // blocktime:Date;
-    // // blocktime:Record<Date | number>;
     @Prop()
     name:string
     @Prop()

@@ -19,10 +19,6 @@ export class UserController {
   findAll() {
     return this.userService.findAll();
   }
-  // @Get("/by/:id")
-  // findOne(@Param('id') id:string) {
-  //   return this.userService.findOne(id);
-  // }
 
   @UseGuards(AuthGuard('jwt'))
   @Patch("upload")
@@ -45,7 +41,6 @@ export class UserController {
   @UseGuards(AuthGuard('jwt'))
   @Post('applywork/:id')
   applyWork(@Param("id") id: string, @Request() req) {
-    // console.log(id, req.user);
     if (req.user?.roles.includes("USER")) {
       return this.userService.applyWork(id, req.user.userId)
     } else {
